@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.0)
 
 include(FeatureSummary)
 set_package_properties(CRYPRO PROPERTIES
-    URL "https://www.g10.app/status"
+    URL "https://g10.app/status/#primitives"
     DESCRIPTION "crypto"
 )
 
