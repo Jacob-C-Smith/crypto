@@ -135,6 +135,7 @@ void key_expansion_core ( unsigned char *in, unsigned char i )
     in[0] ^= rcon[i];
     
 }
+
 void key_expansion ( unsigned char *input, unsigned char *expanded )
 {
     for (size_t i = 0; i < 16; i++)
@@ -165,11 +166,13 @@ void key_expansion ( unsigned char *input, unsigned char *expanded )
         
     }
 }
+
 void sub_bytes ( unsigned char *state )
 {
     for (size_t i = 0; i < 16; i++)
         state[i] = sbox[state[i]];
 }
+
 void shift_rows ( unsigned char *state )
 {
     unsigned char tmp[16];
@@ -197,6 +200,7 @@ void shift_rows ( unsigned char *state )
     memcpy(state, tmp, 16);
     
 }
+
 void mix_cols ( unsigned char *state )
 {
 
@@ -225,6 +229,7 @@ void mix_cols ( unsigned char *state )
     memcpy(state, tmp, 16);
 
 }
+
 void add_round_key ( unsigned char *state, unsigned char *round_key )
 {
     for (size_t i = 0; i < 16; i++)
@@ -232,7 +237,8 @@ void add_round_key ( unsigned char *state, unsigned char *round_key )
         state[i]^=round_key[i];
     }
 }
-int  aes_encrypt ( unsigned char *message, unsigned char *key ) 
+
+int aes_encrypt ( unsigned char *message, unsigned char *key ) 
 {
 
     // Initialized data

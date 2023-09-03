@@ -10,17 +10,7 @@
 #pragma once
 
 // Includes
-#include <stdio.h>
-
-// Platform dependent includes
-#ifdef _WIN64
-    #include <windows.h>
-    #include <process.h>
-#else
-    #include <pthread.h>
-    #include <semaphore.h>
-    #include <time.h>
-#endif
+#include <stddef.h>
 
 // Platform dependent macros
 #ifdef _WIN64
@@ -29,13 +19,13 @@
 #define DLLEXPORT
 #endif
 
-// Platform dependent typedefs
-#ifdef _WIN64
-//WIN
-#else
-//POSIX
-#endif
-
-// Typedefs
-
 // Function declarations
+/**!
+ * Hash l bytes of pointer k using the MurMur64 hash function
+ * 
+ * @param k pointer to data to be hashed
+ * @param l number of bytes to hash
+ * 
+ * @return the MurMur64 hash
+*/
+DLLEXPORT unsigned long long crypto_mmh64 ( const void* const k, size_t l )

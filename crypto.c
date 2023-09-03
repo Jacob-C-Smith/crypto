@@ -9,7 +9,7 @@
 // Include 
 #include <crypto/crypto.h>
 
-unsigned long long mmh64 ( const void* const k, size_t l )
+unsigned long long crypto_mmh64 ( const void* const k, size_t l )
 {
 
     // Argument check
@@ -29,7 +29,7 @@ unsigned long long mmh64 ( const void* const k, size_t l )
 
     // Just go look it up on Wikipedia. I'm not going to pretend I know how this works.
     // https://en.wikipedia.org/wiki/MurmurHash
-    while (data != end)
+    while ( data != end )
     {
         unsigned long long k = *data++;
 
@@ -43,7 +43,7 @@ unsigned long long mmh64 ( const void* const k, size_t l )
 
     d2 = (unsigned char *)data;
 
-    switch (l & 7)
+    switch ( l & 7 )
     {
         case 7: h ^= (unsigned long long)(d2[6]) << 48;
         case 6: h ^= (unsigned long long)(d2[5]) << 40;
@@ -76,11 +76,4 @@ unsigned long long mmh64 ( const void* const k, size_t l )
                 return 0;
         }
     }
-}
-
-int aes_enc (  )
-{
-
-    // Success
-    return 1;
 }
