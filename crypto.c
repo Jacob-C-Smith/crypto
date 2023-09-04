@@ -13,9 +13,7 @@ unsigned long long crypto_mmh64 ( const void* const k, size_t l )
 {
 
     // Argument check
-    #ifndef NDEBUG
-        if ( k == (void *) 0 ) goto no_k;
-    #endif
+    if ( k == (void *) 0 ) goto no_k;
     
     // Constant data
     const unsigned long long m = 0xc6a4a7935bd1e995;
