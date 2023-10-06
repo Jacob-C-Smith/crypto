@@ -23,7 +23,7 @@
 // Type definitions
 typedef unsigned long long(*crypto_hash_function_64_t)( const void *const k, size_t l );
 
-// Function declarations
+// Function declarations 
 /** !
  * Hash data using the MurMur64 hash function
  * 
