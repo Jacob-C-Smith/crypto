@@ -1,5 +1,5 @@
-﻿# Need CMake 3.20
-cmake_minimum_required (VERSION 3.20)
+﻿# Need CMake 3.0
+cmake_minimum_required (VERSION 3.0)
 
 # The name of the repository
 project ("crypto")
