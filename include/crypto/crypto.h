@@ -10,6 +10,7 @@
 #pragma once
 
 // Includes
+#include <stdio.h>
 #include <stddef.h>
 
 // Platform dependent macros
@@ -22,8 +23,8 @@
 // Type definitions
 typedef unsigned long long(*crypto_hash_function_64_t)( const void *const k, size_t l );
 
-// Function declarations
-/**!
+// Function declarations 
+/** !
  * Hash data using the MurMur64 hash function
  * 
  * @param k pointer to data to be hashed
@@ -33,8 +34,8 @@ typedef unsigned long long(*crypto_hash_function_64_t)( const void *const k, siz
 */
 DLLEXPORT unsigned long long crypto_mmh64 ( const void* const k, size_t l );
 
-/**!
- * Hash data using the xxHash64 hash function
+/** !
+ * TODO: Hash data using the xxHash64 hash function
  * 
  * @param k pointer to data to be hashed
  * @param l number of bytes to hash
