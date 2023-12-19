@@ -1,5 +1,5 @@
 ﻿# Need CMake 3.0
-cmake_minimum_required (VERSION 3.0)
+cmake_minimum_required (VERSION 3.28.0)
 
 # The name of the repository
 project ("crypto")
@@ -23,14 +23,22 @@ if ( NOT "${HAS_CRYPTO}")
     # Log
     message("[crypto] Adding crypto project")
 
+    # Set include dirctory
+    set(CRYPTO_INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/include)
+
     # Let any parent project know that it has the crypto project
-    set(HAS_CRYPTO CACHE true PARENT_SCOPE)
+    if(NOT PROJECT_IS_TOP_LEVEL)
+        set(HAS_CRYPTO true PARENT_SCOPE)
+        set(CRYPTO_INCLUDE_DIR ${CMAKE_CURRENT_LIST_DIR}/include PARENT_SCOPE)
+    endif()
 endif()
 
 # Add source to the executable
-add_executable(crypto_example "crypto.c" "main.c")
-target_include_directories(crypto_example PUBLIC include include/crypto/)
+add_executable(crypto_example "main.c")
+add_dependencies(crypto_example crypto)
+target_include_directories(crypto_example PUBLIC ${CRYPTO_INCLUDE_DIR})
+target_link_libraries(crypto_example crypto)
 
 # Add source to the library
 add_library(crypto SHARED "crypto.c")
-target_include_directories(crypto PUBLIC include include/crypto/)
+target_include_directories(crypto PUBLIC ${CRYPTO_INCLUDE_DIR})
