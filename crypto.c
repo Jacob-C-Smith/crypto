@@ -75,3 +75,45 @@ unsigned long long crypto_mmh64 ( const void* const k, size_t l )
         }
     }
 }
+
+unsigned long long crypto_fnv64 ( const void* const k, size_t l )
+{
+
+    // Argument check
+    if ( k == (void *) 0 ) goto no_k;
+    
+    // Constant data
+    const unsigned long long p = 0x100000001B3;
+
+    // Initialized data
+    unsigned long long h = 0xc6a4a7935bd1e995;
+    
+    // Compute the hash
+    for (size_t i = 0; i < l; i++)
+    {
+
+        // XOR the eight least significant bits of the hash
+        h ^= ((char *)k)[i];
+
+        // Multiply the hash by the prime
+        h *= p;
+    }
+    
+    // Success
+    return h;
+
+    // Error handling
+    {
+
+        // Argument error
+        {
+            no_k:
+                #ifndef NDEBUG
+                    printf("[crypto] Null pointer provided for parameter \"k\" in call to function \"%s\"\n", __FUNCTION__);
+                #endif
+
+                // Error
+                return 0;
+        }
+    }
+}
