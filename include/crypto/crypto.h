@@ -20,5 +20,8 @@
 #define DLLEXPORT
 #endif
 
-// Type definitions
-typedef unsigned long long(*crypto_hash_function_64_t)( const void *const k, size_t l );
+// Memory management macro
+#ifndef CRYPTO_REALLOC
+    #define CRYPTO_REALLOC(p, sz) realloc(p,sz)
+    #define CRYPTO_FREE(p) free(p)
+#endif
