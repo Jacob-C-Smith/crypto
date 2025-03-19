@@ -1,0 +1,22 @@
+{
+    "name"        : "crypto",
+    "group"       : "Primitives",
+    "description" : "Cross platform cryptography functions",
+    "repository"  : "https://github.com/Jacob-C-Smith/crypto",
+    "icon"        : "https://icons.g10.app/crypto.png",
+    "tested"      : "dc",
+    "thread safe" : true,
+    "demo"        : "https://codespaces.new/Jacob-C-Smith/crypto?quickstart=1",
+    "notes" :
+    [
+        "I'm not actively working on this right now."
+    ],
+    "todos" :
+    [
+        "Clean up AES encryption",
+        "Implement AES decryption",
+        "Implement xxHash, SHA-1, SHA-256",
+        "Implement AES, and SHA using x64 assembly",
+        "Write a tester"
+    ]
+}
